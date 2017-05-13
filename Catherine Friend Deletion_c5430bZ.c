@@ -8,20 +8,12 @@ int main()
     bool flag =false;
     for(i=0,j=0;i<n;i++)
     {
-        if(scanf("%d",&arr[i])==-1)
-        {
-            printf("Invalid Input ");
-            break;
-            flag=true;
-        }
-        j++;
-    }
-    for(i=0;i<j;i++)
-    {
+        scanf("%d",&arr[i]);
         if(arr[i]>100)
         {
-            printf("The popularity should be between 0 and 100");
+            printf("Invalid Input The popularity should be between 0 and 100");
             flag=true;
+            break;
         }
     }
     if(flag==false)
