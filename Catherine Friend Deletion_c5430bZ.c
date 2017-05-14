@@ -6,35 +6,41 @@ int main()
     scanf("%d%d",&n,&k);
     int arr[n];
     bool flag =false;
-    for(i=0,j=0;i<n;i++)
+    if(n>k)
     {
-        scanf("%d",&arr[i]);
-        if(arr[i]>100)
+        for(i=0,j=0;i<n;i++)
         {
-            printf("Invalid Input The popularity should be between 0 and 100");
-            flag=true;
-            break;
-        }
-    }
-    if(flag==false)
-    {
-        for(j=0;j<n-1;j++)
-        {
-            if(arr[j]<arr[j+1] && k!=0)
+            scanf("%d",&arr[i]);
+            if(arr[i]>100)
             {
+                printf("Invalid Input The popularity should be between 0 and 100");
                 flag=true;
-                arr[j]=0;
-                k--;
+                break;
             }
         }
         if(flag==false)
         {
-            arr[n-1]=0;
+            for(j=0;j<n-1;j++)
+            {
+                if(arr[j]<arr[j+1] && k!=0)
+                {
+                    flag=true;
+                    arr[j]=0;
+                    k--;
+                }
+            }
+            if(flag==false)
+            {
+                arr[n-1]=0;
+            }
+            for(i=0;i<n;i++)
+            {
+                if(arr[i]!=0)
+                    printf("%d ",arr[i]);
+            }
         }
-        for(i=0;i<n;i++)
-        {
-            if(arr[i]!=0)
-                printf("%d ",arr[i]);
-        }
+    }
+    else{
+        printf("Invalid input");
     }
 }
