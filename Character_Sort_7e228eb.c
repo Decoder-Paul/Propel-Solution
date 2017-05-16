@@ -19,7 +19,7 @@ void sort(char* a, int l)
 int main()
 {
     char a[1000],upper[1000],lower[1000];
-    int i,j,k,l,x;
+    int i,j,k,l,x,y,z;
     scanf("%s",&a);
     for(i=0,j=0,k=0;a[i]!='\0';i++)
     {
@@ -36,19 +36,24 @@ int main()
     }
     upper[j]='\0';
     lower[k]='\0';
-    printf("%s\n",upper);
-    printf("%s\n",lower);
     sort(upper,j);
     sort(lower,k);
-    printf("%s\n",upper);
-    printf("%s\n",lower);
     l=(j<k) ? j : k;
-    for(i=0,x=0;i<l-1;i++)
+    for(i=0,x=0;i<l;i++)
     {
-        a[x++]=upper[i];
-        a[x++]=lower[i];
-        printf("%d",x);
+        a[x]=upper[i];
+        x++;
+        a[x]=lower[i];
+        x++;
     }
+    while(i<j)
+    {
+        a[x++]=upper[i++];
+    }
+    while(i<k)
+    {
+        a[x++]=lower[i++];
+    }
+    a[j+k]='\0';
     printf("%s",a);
-    a[j+k+1]='\0';
 }
