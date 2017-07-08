@@ -1,0 +1,71 @@
+#include<stdio.h>
+int n;
+void floodFillGame(int screen[][n], int x, int y, int pColor, int color)
+{
+	if (x < 0 || x >= n || y < 0 || y >= n)
+		return;
+	if (screen[x][y] != pColor)
+		return;
+	screen[x][y] = color;
+	floodFillGame(screen, x+1, y, pColor, color);
+	floodFillGame(screen, x-1, y, pColor, color);
+	floodFillGame(screen, x, y+1, pColor, color);
+	floodFillGame(screen, x, y-1, pColor, color);
+}
+void floodFill(int field[][n], int x, int y, int color)
+{
+	int pColor = field[x][y];
+	floodFillGame(field, x, y, pColor, color);
+}
+
+int main()
+{
+	int x = 0, y = 0, color,i,j;
+	printf("Enter the size of the N x N image:\n");
+	scanf("%d",&n);
+	if(n>0){
+	    int field[n][n];
+    	for(i=0;i<n;i++)
+    	{
+    	    for(j=0;j<n;j++)
+    	    {
+                scanf("%d",&field[i][j]);
+    	    }
+    	}
+    	printf("Enter the color/value to be filled for the 1st object\n");
+    	scanf("%d",&color);
+    	printf("Image before filing:\n");
+    	for (i=0; i<n; i++)
+    	{
+    		for (j=0; j<n; j++)
+    		{
+    		    printf("%d ",field[i][j]);
+    		}
+    		printf("\n");
+    	}
+    	for(i=0;i<n;i++)
+    	{
+    	    for(j=0;j<n;j++)
+    	    {
+    	        if(field[i][j]==1)
+    	        {
+    	            x=i,y=j;
+    	            floodFill(field, x, y, color++);
+    	        }
+    	    }
+    	}
+    
+    	printf("Image after filing:\n");
+    	for (i=0; i<n; i++)
+    	{
+    		for (j=0; j<n; j++)
+    		{
+    		    printf("%d ",field[i][j]);
+    		}
+    		printf("\n");
+    	}
+	}
+	else{
+	    printf("Invalid Input");
+	}
+}
