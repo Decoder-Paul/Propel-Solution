@@ -1,0 +1,42 @@
+#include <stdio.h>
+int main()
+{
+    int n,i,j,k;
+    printf("Enter the size of Matrix:\n");
+    scanf("%d",&n);
+    char a[n][n];
+    for(i=0;i<n;i++)
+    {
+        a[i][0]='F';
+        a[i][n-1]='F';
+    }
+    for(i=0;i<n;i++)
+    {
+        a[0][i]='F';
+        a[n-1][i]='F';
+    }
+    for(i=0;i<n;i++)
+    {
+        a[i][i]='M';
+    }
+    for(i=0;i<n;i++)
+    {
+        a[i][n-i-1]='M';
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            if(a[i][j]!='M' && a[i][j]!='F')
+                a[i][j]='C';
+        }
+    }
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            printf("%c ",a[i][j]);
+        }
+        printf("\n");
+    }
+}
